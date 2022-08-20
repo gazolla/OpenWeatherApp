@@ -14,20 +14,19 @@ struct MainView: View {
     var body: some View {
         NavigationStack{
             ZStack{
-                if owds.weathers.isEmpty {
-                    if isLoading {
-                        VStack(alignment: .center){
-                            Text("Weather").font(.largeTitle).fontWeight(.bold)
-                            Text("is loading...").font(.headline).fontWeight(.thin)
+                if owds.openWeatherError == nil {
+                    if owds.weathers.isEmpty {
+                        if isLoading {
+                            showLoading
+                        } else {
+                            WeatherEmptyView()
+                                .transition(.scale)
                         }
-                        .transition(.scale)
                     } else {
-                        WeatherEmptyView()
-                            .transition(.scale)
+                        showWeathers
                     }
                 } else {
-                    showWeathers
-                        .transition(.opacity)
+                    showError
                 }
             }
             .onAppear() {
@@ -55,19 +54,42 @@ struct MainView: View {
                 }
             }
         }
+        .transition(.opacity)
+    }
+    
+    var showLoading: some View{
+        VStack(alignment: .center){
+            Text("Weather").font(.largeTitle).fontWeight(.bold)
+            Text("is loading...").font(.headline).fontWeight(.thin)
+        }
+        .transition(.scale)
     }
     
     var showProgress: some View{
         ProgressView()
     }
     
+    var showError: some View {
+        VStack(spacing: 150){
+            Spacer()
+            List{
+                Section(header: Text("Error")) {
+                    VStack(alignment: .leading){
+                        Text("code: \(owds.openWeatherError?.cod ?? 0)")
+                        Text(owds.openWeatherError?.message ?? "")
+                            .font(.subheadline.weight(.semibold))
+                    }
+                }
+            }
+        }
+        .navigationTitle(Text("OpenWeather App"))
+    }
+    
     func loadWeathers() async {
         do {
-            isLoading = true
+            withAnimation { isLoading = true }
             let _ = try await owds.loadWeathers(cityNames: cds.getCityNames())
-            withAnimation(.easeInOut) {
-                isLoading = false
-            }
+            withAnimation { isLoading = false }
         } catch {
             print("\(error)")
         }

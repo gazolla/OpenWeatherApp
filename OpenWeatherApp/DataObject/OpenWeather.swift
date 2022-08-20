@@ -122,3 +122,8 @@ struct Appearences{
         "50n": WeatherAppearence(iconName: "sun.max.fill", background: Gradient(colors:[Color(#colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)), Color(#colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1))]))
     ]
 }
+
+struct OpenWeatherError:Codable {
+    var cod:Int?
+    var message:String?
+}

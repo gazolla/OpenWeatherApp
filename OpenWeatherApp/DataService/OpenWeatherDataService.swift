@@ -14,6 +14,7 @@ class OpenWeatherDataService:ObservableObject {
     private init(){ }
     
     @Published var weather:OpenWeather?
+    @Published var openWeatherError:OpenWeatherError?
     @Published var weathers:[OpenWeather?] = []
 
     let APIKey = ""  // <--- TYPE YOUR KEY HERE
@@ -36,12 +37,20 @@ class OpenWeatherDataService:ObservableObject {
             return nil
         }
         do{
+            print("\(url.absoluteString)")
             let (weatherData, _) = try await URLSession.shared.data(from: url)
-            //let str = String(decoding: weatherData, as: UTF8.self)
-           // print("\(str)")
-            let decode = JSONDecoder()
-            let result = try decode.decode(OpenWeather.self, from: weatherData)
-            return result
+            let str = String(decoding: weatherData, as: UTF8.self)
+            if str.contains("{\u{22}cod\u{22}:") {
+                let decode = JSONDecoder()
+                let result = try decode.decode(OpenWeatherError.self, from: weatherData)
+                openWeatherError = result
+                return nil
+            } else {
+                print("\(str)")
+                let decode = JSONDecoder()
+                let result = try decode.decode(OpenWeather.self, from: weatherData)
+                return result
+            }
         } catch {
             print("\(error)")
         }
