@@ -9,7 +9,23 @@ import SwiftUI
 
 struct MainView: View {
     var body: some View {
-        WeatherView(weather: OpenWeatherDataService.instance.weather)
+        NavigationStack{
+            ScrollView(.horizontal){
+                LazyHStack(spacing: 0){
+                    ForEach(1..<5){ _ in
+                        WeatherView(weather: OpenWeatherDataService.instance.weather)
+                    }
+                 }
+             }
+            .ignoresSafeArea()
+            .navigationBarItems(trailing:
+                 NavigationLink {
+                    CityMainView()
+                } label: {
+                    Image(systemName: "list.bullet")
+                    .foregroundColor(.white)
+            })
+        }
     }
 }
 

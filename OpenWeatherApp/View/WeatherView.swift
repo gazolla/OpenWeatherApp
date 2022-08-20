@@ -64,8 +64,10 @@ struct WeatherView: View {
                         detail(imgName: "cloud", text: "clouds", value:    "\(weather.clouds!.all)")
                     }
                 }
+               // .frame(maxWidth: .infinity)
+                .padding(25)
                 Spacer()
-                
+                    
 
                 
             } else {
