@@ -17,6 +17,8 @@
 		C335D33C28B15A6C00D1E350 /* CityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C335D33B28B15A6C00D1E350 /* CityListView.swift */; };
 		C335D33E28B164EA00D1E350 /* CityEmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C335D33D28B164EA00D1E350 /* CityEmptyListView.swift */; };
 		C335D34028B165FE00D1E350 /* CityMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C335D33F28B165FE00D1E350 /* CityMainView.swift */; };
+		C335D34328B1758F00D1E350 /* WeatherEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C335D34228B1758F00D1E350 /* WeatherEmptyView.swift */; };
+		C335D34528B193B900D1E350 /* OpenWeather.gif in Resources */ = {isa = PBXBuildFile; fileRef = C335D34428B193B900D1E350 /* OpenWeather.gif */; };
 		C339871128B0564D00260687 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C339871028B0564D00260687 /* WeatherView.swift */; };
 		C339871328B056D200260687 /* OpenWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C339871228B056D200260687 /* OpenWeather.swift */; };
 		C339871528B0570200260687 /* OpenWeatherDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C339871428B0570200260687 /* OpenWeatherDataService.swift */; };
@@ -38,6 +40,10 @@
 		C335D33B28B15A6C00D1E350 /* CityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListView.swift; sourceTree = "<group>"; };
 		C335D33D28B164EA00D1E350 /* CityEmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityEmptyListView.swift; sourceTree = "<group>"; };
 		C335D33F28B165FE00D1E350 /* CityMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityMainView.swift; sourceTree = "<group>"; };
+		C335D34128B1726900D1E350 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C335D34228B1758F00D1E350 /* WeatherEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherEmptyView.swift; sourceTree = "<group>"; };
+		C335D34428B193B900D1E350 /* OpenWeather.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = OpenWeather.gif; sourceTree = "<group>"; };
+		C335D34628B193D900D1E350 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C339871028B0564D00260687 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		C339871228B056D200260687 /* OpenWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeather.swift; sourceTree = "<group>"; };
 		C339871428B0570200260687 /* OpenWeatherDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherDataService.swift; sourceTree = "<group>"; };
@@ -72,6 +78,7 @@
 				C335D33B28B15A6C00D1E350 /* CityListView.swift */,
 				C335D33D28B164EA00D1E350 /* CityEmptyListView.swift */,
 				C335D33F28B165FE00D1E350 /* CityMainView.swift */,
+				C335D34228B1758F00D1E350 /* WeatherEmptyView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -105,6 +112,8 @@
 		C33A762928B0291A0094C3AD = {
 			isa = PBXGroup;
 			children = (
+				C335D34628B193D900D1E350 /* README.md */,
+				C335D34428B193B900D1E350 /* OpenWeather.gif */,
 				C33A763428B0291A0094C3AD /* OpenWeatherApp */,
 				C33A763328B0291A0094C3AD /* Products */,
 			);
@@ -121,6 +130,7 @@
 		C33A763428B0291A0094C3AD /* OpenWeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				C335D34128B1726900D1E350 /* Info.plist */,
 				C339871628B08E2800260687 /* Extension */,
 				C339870F28B055F800260687 /* DataService */,
 				C339870E28B055EE00260687 /* DataObject */,
@@ -200,6 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C33A763D28B029200094C3AD /* Preview Assets.xcassets in Resources */,
+				C335D34528B193B900D1E350 /* OpenWeather.gif in Resources */,
 				C33A763A28B029200094C3AD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,6 +224,7 @@
 			files = (
 				C339871128B0564D00260687 /* WeatherView.swift in Sources */,
 				C339871528B0570200260687 /* OpenWeatherDataService.swift in Sources */,
+				C335D34328B1758F00D1E350 /* WeatherEmptyView.swift in Sources */,
 				C33A763828B0291A0094C3AD /* MainView.swift in Sources */,
 				C335D33C28B15A6C00D1E350 /* CityListView.swift in Sources */,
 				C335D33A28B159F100D1E350 /* CityInfoView.swift in Sources */,
@@ -358,6 +370,8 @@
 				DEVELOPMENT_TEAM = MA5BADG5AW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OpenWeatherApp/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -387,6 +401,8 @@
 				DEVELOPMENT_TEAM = MA5BADG5AW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OpenWeatherApp/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

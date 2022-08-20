@@ -7,31 +7,68 @@
 
 import Foundation
 
-
+@MainActor
 class OpenWeatherDataService:ObservableObject {
     
     static var instance = OpenWeatherDataService()
-    private init(){
-        print("loading...")
-        loadWeather()
-    }
+    private init(){ }
     
     @Published var weather:OpenWeather?
+    @Published var weathers:[OpenWeather?] = []
+
+    let APIKey = ""  // <--- TYPE YOUR KEY HERE
+
+    func buildURL(cityName:String)->URL?{
+        var uc = URLComponents()
+        uc.scheme = "http"
+        uc.host = "api.openweathermap.org"
+        uc.path = "/data/2.5/weather"
+        uc.queryItems = [
+            URLQueryItem(name: "q", value: cityName),
+            URLQueryItem(name: "APPID", value: APIKey),
+            URLQueryItem(name: "units", value: "metric")
+        ]
+        return uc.url
+    }
     
-    let response = """
-    {"coord":{"lon":-0.1257,"lat":51.5085},"weather":[{"id":800,"main":"Clear","description":"clear sky","icon":"01n"}],"base":"stations","main":{"temp":26,"feels_like":286.44,"temp_min":283.35,"temp_max":288.71,"pressure":1017,"humidity":80},"visibility":10000,"wind":{"speed":3.6,"deg":230},"clouds":{"all":0},"dt":1660966194,"sys":{"type":2,"id":2075535,"country":"GB","sunrise":1660971231,"sunset":1661022862},"timezone":3600,"id":2643743,"name":"London","cod":200}
-    """
-    
-    func loadWeather(){
-        do {
-            print("\(response)")
-            let data = Data(response.utf8)
-            let decoder = JSONDecoder()
-            let result = try decoder.decode(OpenWeather.self, from: data)
-            print("\(result)")
-            weather = result
-        } catch{
+    func loadWeather(cityName:String) async -> OpenWeather?{
+        guard let url = buildURL(cityName: cityName) else {
+            return nil
+        }
+        do{
+            let (weatherData, _) = try await URLSession.shared.data(from: url)
+            //let str = String(decoding: weatherData, as: UTF8.self)
+           // print("\(str)")
+            let decode = JSONDecoder()
+            let result = try decode.decode(OpenWeather.self, from: weatherData)
+            return result
+        } catch {
             print("\(error)")
         }
+        return nil
+    }
+    
+    func loadWeathers(cityNames:[String]) async throws ->[OpenWeather?] {
+        return try await withThrowingTaskGroup(of: OpenWeather?.self, body: { group -> [OpenWeather?] in
+            for city in cityNames {
+                group.addTask {
+                    await self.loadWeather(cityName: city) ?? nil
+                }
+            }
+            var result = [OpenWeather?]()
+            for try await value in group{
+                result.append(value)
+            }
+            
+            await MainActor.run(body: {
+                self.weathers = result
+            })
+            
+            return result
+        })
+    }
+    
+    func convertToCelsius(fahrenheit: Int) -> Int {
+        return Int(5.0 / 9.0 * (Double(fahrenheit) - 32.0))
     }
 }

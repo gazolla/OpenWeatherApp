@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct OpenWeather: Identifiable, Codable {
+struct OpenWeather: Codable, Identifiable{
     var coord: Coord?
     var weather:[Weather]?
     var base: String?
@@ -19,7 +19,7 @@ struct OpenWeather: Identifiable, Codable {
     var dt:Double?
     var sys:Sys?
     var timezone:Int?
-    var id:Int?
+    var id = UUID()
     var name:String?
     var cod:Int?
     var appearence:WeatherAppearence?{
@@ -33,6 +33,21 @@ struct OpenWeather: Identifiable, Codable {
         let weekdayIndex = Calendar.current.component(.weekday, from: date) - 1
         let weekday = DateFormatter().weekdaySymbols[weekdayIndex]
         return "\(weekday)"
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        case coord, weather, base, main, visibility, wind, clouds, dt, sys, timezone, name, cod
+        
+    }
+}
+
+extension OpenWeather:  Hashable {
+    public func hash(into hasher: inout Hasher) {
+        return hasher.combine(id)
+    }
+    
+    public static func == (lhs: OpenWeather, rhs: OpenWeather) -> Bool {
+        return lhs.id == rhs.id
     }
 }
 

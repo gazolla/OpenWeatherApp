@@ -23,6 +23,16 @@ class CityDataService: ObservableObject {
     @Published var cities:[City] = []
     @Published var currentCity:City?
     
+    func getCityNames()->[String]{
+        var result = [String]()
+        for city in cities{
+            if let name = city.name {
+                result.append(name)
+            }
+        }
+        return result
+    }
+    
     func loadCities() throws {
         if let data = UserDefaults.standard.data(forKey: "cities"){
             let decoder = JSONDecoder()

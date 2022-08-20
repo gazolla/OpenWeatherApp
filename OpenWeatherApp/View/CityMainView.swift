@@ -12,18 +12,25 @@ struct CityMainView: View {
     @State private var deleteIndexSet: IndexSet?
     @State private var showSearchCity: Bool = false
     @StateObject private var cds = CityDataService.instance
+    var loadWeathers: (() async ->())
 
     var body: some View {
         NavigationView{
             if cds.cities.isEmpty {
                 CityEmptyListView()
-                    .modifier(CityListModifier(showSearchCity: showSearchCity, cds: cds))
+                     .modifier(CityListModifier(showSearchCity: showSearchCity, cds: cds))
+                     .transition(.scale)
             } else {
                 CityListView(cds: cds)
                     .modifier(CityListModifier(showSearchCity: showSearchCity, cds: cds))
                     .refreshable {
                         try? cds.loadCities()
                     }
+            }
+        }
+        .onDisappear{
+            Task{
+                await loadWeathers()
             }
         }
     }
@@ -50,8 +57,16 @@ extension PresentationDetent{
     static let small = Self.height(100)
 }
 
+struct MockCityMainViewPreview:View{
+    func mock(){}
+    var body: some View{
+        CityMainView(loadWeathers: mock)
+    }
+}
+
 struct CityMainView_Previews: PreviewProvider {
     static var previews: some View {
-        CityMainView()
+        MockCityMainViewPreview()
     }
+
 }

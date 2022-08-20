@@ -30,7 +30,9 @@ struct CityListView: View {
                     primaryButton: .cancel(),
                     secondaryButton: .destructive(Text("Delete"),
                                     action: {
-                                        deleteCity(at: indexSet!)
+                                        withAnimation {
+                                            deleteCity(at: indexSet!)
+                                        }
                 }))
             }
         }
