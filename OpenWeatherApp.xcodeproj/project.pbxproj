@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C339871128B0564D00260687 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C339871028B0564D00260687 /* WeatherView.swift */; };
+		C339871328B056D200260687 /* OpenWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C339871228B056D200260687 /* OpenWeather.swift */; };
+		C339871528B0570200260687 /* OpenWeatherDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C339871428B0570200260687 /* OpenWeatherDataService.swift */; };
+		C339871828B08E4E00260687 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C339871728B08E4E00260687 /* Extension.swift */; };
 		C33A763628B0291A0094C3AD /* OpenWeatherAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A763528B0291A0094C3AD /* OpenWeatherAppApp.swift */; };
 		C33A763828B0291A0094C3AD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33A763728B0291A0094C3AD /* MainView.swift */; };
 		C33A763A28B029200094C3AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C33A763928B029200094C3AD /* Assets.xcassets */; };
@@ -14,6 +18,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C339871028B0564D00260687 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
+		C339871228B056D200260687 /* OpenWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeather.swift; sourceTree = "<group>"; };
+		C339871428B0570200260687 /* OpenWeatherDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherDataService.swift; sourceTree = "<group>"; };
+		C339871728B08E4E00260687 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		C33A763228B0291A0094C3AD /* OpenWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33A763528B0291A0094C3AD /* OpenWeatherAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherAppApp.swift; sourceTree = "<group>"; };
 		C33A763728B0291A0094C3AD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -32,6 +40,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C339870D28B055E600260687 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C339871028B0564D00260687 /* WeatherView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C339870E28B055EE00260687 /* DataObject */ = {
+			isa = PBXGroup;
+			children = (
+				C339871228B056D200260687 /* OpenWeather.swift */,
+			);
+			path = DataObject;
+			sourceTree = "<group>";
+		};
+		C339870F28B055F800260687 /* DataService */ = {
+			isa = PBXGroup;
+			children = (
+				C339871428B0570200260687 /* OpenWeatherDataService.swift */,
+			);
+			path = DataService;
+			sourceTree = "<group>";
+		};
+		C339871628B08E2800260687 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C339871728B08E4E00260687 /* Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		C33A762928B0291A0094C3AD = {
 			isa = PBXGroup;
 			children = (
@@ -51,6 +91,10 @@
 		C33A763428B0291A0094C3AD /* OpenWeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				C339871628B08E2800260687 /* Extension */,
+				C339870F28B055F800260687 /* DataService */,
+				C339870E28B055EE00260687 /* DataObject */,
+				C339870D28B055E600260687 /* View */,
 				C33A763528B0291A0094C3AD /* OpenWeatherAppApp.swift */,
 				C33A763728B0291A0094C3AD /* MainView.swift */,
 				C33A763928B029200094C3AD /* Assets.xcassets */,
@@ -137,7 +181,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C339871128B0564D00260687 /* WeatherView.swift in Sources */,
+				C339871528B0570200260687 /* OpenWeatherDataService.swift in Sources */,
 				C33A763828B0291A0094C3AD /* MainView.swift in Sources */,
+				C339871828B08E4E00260687 /* Extension.swift in Sources */,
+				C339871328B056D200260687 /* OpenWeather.swift in Sources */,
 				C33A763628B0291A0094C3AD /* OpenWeatherAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
