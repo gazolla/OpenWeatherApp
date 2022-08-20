@@ -19,7 +19,7 @@ class OpenWeatherDataService:ObservableObject {
     @Published var weather:OpenWeather?
     
     let response = """
-    {"coord":{"lon":-0.1257,"lat":51.5085},"weather":[{"id":800,"main":"Clear","description":"clear sky","icon":"01n"}],"base":"stations","main":{"temp":26,"feels_like":286.44,"temp_min":283.35,"temp_max":288.71,"pressure":1017,"humidity":80},"visibility":10000,"wind":{"speed":3.6,"deg":230},"clouds":{"all":0},"dt":1660966194,"sys":{"type":2,"id":2075535,"country":"GB","sunrise":1660971231,"sunset":1661022862},"timezone":3600,"id":2643743,"name":"London","cod":200}
+    {"coord":{"lon":-0.1257,"lat":51.5085},"weather":[{"id":800,"main":"Clear","description":"clear sky","icon":"01d"}],"base":"stations","main":{"temp":26,"feels_like":286.44,"temp_min":283.35,"temp_max":288.71,"pressure":1017,"humidity":80},"visibility":10000,"wind":{"speed":3.6,"deg":230},"clouds":{"all":0},"dt":1660966194,"sys":{"type":2,"id":2075535,"country":"GB","sunrise":1660971231,"sunset":1661022862},"timezone":3600,"id":2643743,"name":"London","cod":200}
     """
     
     func loadWeather(){
