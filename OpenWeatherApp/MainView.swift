@@ -47,14 +47,18 @@ struct MainView: View {
     }
     
     var showWeathers: some View{
-        ScrollView(.horizontal){
-            LazyHStack(spacing: 0){
-                ForEach(owds.weathers, id:\.self){ weather in
-                    WeatherView(weather: weather)
+        GeometryReader { geo in
+            ScrollView(.horizontal){
+                LazyHStack(spacing: 0){
+                    ForEach(owds.weathers, id:\.self){ weather in
+                        WeatherView(weather: weather)
+                            .frame(width: geo.size.width)
+                    }
                 }
             }
+            .transition(.opacity)
+           
         }
-        .transition(.opacity)
     }
     
     var showLoading: some View{

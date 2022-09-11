@@ -17,7 +17,7 @@ class OpenWeatherDataService:ObservableObject {
     @Published var openWeatherError:OpenWeatherError?
     @Published var weathers:[OpenWeather?] = []
 
-    let APIKey = ""  // <--- TYPE YOUR KEY HERE
+    let APIKey = "6e7647427db47fa9e311f071293a8cb6"  // <--- TYPE YOUR KEY HERE
 
     func buildURL(cityName:String)->URL?{
         var uc = URLComponents()
